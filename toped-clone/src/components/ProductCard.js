@@ -5,6 +5,7 @@ import StarRatings from 'react-star-ratings';
 const ProductCard = (props) => {
   const { productName, productImage, price, seller, sellerLocation, totalStar, totalReview } = props.product
   const [showSeller, setShowSeller] = useState(false)
+  const [likeProduct, setLikeProduct] = useState(false)
 
   const starsStyle = {
     textAlign:'left'
@@ -32,7 +33,7 @@ const ProductCard = (props) => {
     fontWeight:"Light",
     textAlign:"Left",
     color:"black",
-    marginBottom:"0px"
+    marginBottom:"0px",
   }
 
   const reviewStyle = {
@@ -47,9 +48,11 @@ const ProductCard = (props) => {
 
   const cardStyle = {
     width:"200px",
-    height:"200px",
+    height:"350px",
     borderRadius:"10px",
+    border:"solid 1px grey",
     marginRight: "20px",
+    marginBottom: "20px"
   }
 
   const cardBodyStyle = {
@@ -60,10 +63,21 @@ const ProductCard = (props) => {
   }
 
   const imageStyle = {
-    width: " 200px",
+    width: " 195px",
     height: "200px",
     paddingLeft: "0px",
     paddingRight:"0px",
+  }
+
+  const likeStyle = {
+    position:"absolute",
+    top: "8px",
+    right:"16px",
+    border:"solid 1px black",
+    paddingLeft:"5px",
+    paddingRight:"5px",
+    borderRadius:"50%",
+    backgroundColor:"white"
   }
 
   const handleShowSeller = () => {
@@ -74,14 +88,30 @@ const ProductCard = (props) => {
     setShowSeller(false)
   }
 
+  const handleLikeButton = () => {
+    setLikeProduct(!likeProduct)
+  }
+
 
   return (
-    <div class="card" style={cardStyle}>
-    <img class="card-img-top" src={productImage} alt="Card cap" style={imageStyle}/>
-    <div class="card-body" style ={cardBodyStyle}>
-      <h5 class="card-title" style={cardTitleStyle}>{productName}</h5>
-      <p style={cardPriceStyle}>Rp.{price}</p>
-      <div style={cardLocationStyle} onMouseEnter={() => handleShowSeller()} onMouseOver={() => handleCloseSeller()}>{showSeller === true ? seller : sellerLocation}</div>
+    <div className="card" style={cardStyle}>
+    <div style={{"position":"relative"}}>
+    <div onClick={() => handleLikeButton()} style={likeStyle}>
+    {
+      likeProduct === false ? (
+        <i className="fa fa-heart-o" aria-hidden="true"></i>
+
+      ) : (
+        <i className="fa fa-heart" aria-hidden="true"></i>
+      )
+    }
+    </div>
+    </div>
+    <img className="card-img-top" src={productImage} alt="Card cap" style={imageStyle}/>
+    <div className="card-body" style ={cardBodyStyle}>
+      <h5 className="card-title" style={cardTitleStyle}>{productName}</h5>
+      <p style={cardPriceStyle}>Rp {price.toLocaleString("id-ID")}</p>
+      <p style={cardLocationStyle} onMouseEnter={() => handleShowSeller()} onMouseLeave={() => handleCloseSeller()}>{showSeller === true ? seller : sellerLocation}</p>
       <div style={starsStyle} className="d-flex">
       <StarRatings
           rating={totalStar === 0 ? 0 : totalStar/totalReview}

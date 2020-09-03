@@ -52,5 +52,14 @@
     "sellerLocation": "Tangerang",
     "totalStar":5,
     "totalReview": 1
+  },
+  {
+    "productName":"Mouse Wireless Logitech M170 Original Hitam Garansi Resmi",
+    "productImage":"https://ecs7.tokopedia.net/img/cache/700/product-1/2018/12/18/7916512/7916512_31c574a6-7809-48e1-b1da-0dabb7fe7289_800_800.jpg",
+    "price": 101000,
+    "seller": "Seller-7",
+    "sellerLocation": "Jakarta Selatan",
+    "totalStar":12100,
+    "totalReview": 3720
   }
 ]
