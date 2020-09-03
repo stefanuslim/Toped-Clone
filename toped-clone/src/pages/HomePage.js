@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import data from '../DataProducts/dummy.json'
+import data from '../DummyData/products.json'
 import ProductCard from '../components/ProductCard'
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 
